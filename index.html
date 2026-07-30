@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="しゅー団リンク集">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>しゅー団</title>
+		<link rel="icon" type="image/x-icon" href="./img/logo.ico">
+		<style>
+			body{
+				--headerbg-img: url("./img/header_bg.png");
+				--headerbg-color: white;
+				--header-font-color: black;
+				
+				/*--footerbg-img: url("./img/footer_bg.png");*/
+				--footerbg-img: url("");
+				--footerbg-color: white;
+				--footer-font-color: black;
+				
+				--bodybg-color: #ffac7c;
+				--contentbg-color: #eee;
+				--sectionbg-color: white;
+				
+				--link-color: black;
+				--font-color: black;
+
+				width: 50%;
+				min-width: 760px;
+				max-width: 960px;
+				margin: 0 auto;
+				background-color: var(--bodybg-color);
+
+				font-size: clamp(16px,1.1vw,32px);
+				color: var(--font-color);
+			}
+			*{
+				box-sizing: border-box;
+			}
+			img{
+				vertical-align: middle;
+				object-fit: cover;
+			}
+			menu,ul{
+				margin: 0;
+				padding: 0;
+			}
+			li::marker{
+				content:"";
+			}
+			a,a:visited{
+				color: var(--link-color);
+				text-decoration: none;
+			}
+			main{
+				margin-block: 2em;
+			}
+			section{
+				background-color: var(--sectionbg-color);
+				padding: 1em;
+				margin-block-end: 2em;
+			}
+			header{
+				padding: 1em;
+				background-image: var(--headerbg-img);
+				background-color: var(--headerbg-color);
+				color: var(--header-font-color);
+
+				background-size: cover;
+				background-position-y: center;
+				height: 10em;
+			}
+			footer{
+				min-height: 10em;
+				position: relative;
+				padding: 1em;
+				background-color: var(--footerbg-color);
+				background-image: var(--footerbg-img);
+				color: var(--footer-font-color);
+				
+				background-size: cover;
+				background-position-y: center;
+				overflow: hidden;
+			}
+			footer .img_content{
+				position: absolute;
+				width: 25%;
+				right: 1em;
+				bottom: -0.2em;
+			}
+			footer .img_content img{
+				width: 100%;
+			}
+			/*----------------------------------------------
+				スケジュール関連
+			----------------------------------------------*/
+			.schedule_img img{
+				width: 100%;
+			}
+
+			/*----------------------------------------------
+				ニュース関連
+			----------------------------------------------*/
+			.news_content{
+				border: 0.5em gray;
+				border-style: dashed solid;
+				padding: 1em;
+			}
+			.news_content:not(:first-child){
+				margin-block-start: -0.5em;
+			}
+
+			/*----------------------------------------------
+				カード関連
+			----------------------------------------------*/
+			.card_content{
+				width: 100%;
+				background-color: var(--contentbg-color);
+				transition-duration: 0.25s;
+				transition-property: transform, box-shadow;
+			}
+			.card_content:not(:last-child){
+				margin-block-end: 1em;
+			}
+			.card_content:hover{
+				transform: scale(1.05);
+				box-shadow: 0px 0px 20px black;
+			}
+			.card_link{
+				display: flex;
+				width: 100%;
+				height: 100%;
+			}
+			.card_content .link_content{
+				margin: 0.5em;
+			}
+			.card_content .img_content{
+				position: relative;
+				max-width: 25%;
+				height: max-content;
+				margin: 0.5em;
+				border: solid 1px gray;
+				background-color: white;
+			}
+			.card_content .img_content .icon_img{
+				border: solid 1px gray;
+				background-color: white;
+				aspect-ratio: 1/1;
+			}
+			.card_content .img_content .icon_img img{
+				height: 100%;
+			}
+			.card_content .img_content .sns_img{
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				right: 0;
+				bottom: 0;
+				width :25%;
+				aspect-ratio: 1/1;
+				background-color: white;
+				overflow: hidden;
+				border-radius: 50%;
+			}
+			.card_content .img_content .sns_img img{
+				width: 90%;
+			}
+			/*----------------------------------------------
+				アイコン関連
+			----------------------------------------------*/
+			.icon_list{
+				width: 100%;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1em;
+			}
+			.icon_content{
+				padding: 1em;
+				background-color: var(--contentbg-color);
+				transition-duration: 0.25s;
+				transition-property: transform, box-shadow;
+			}
+			.icon_content:hover{
+				transform: scale(1.05);
+				box-shadow: 0px 0px 20px black;
+			}
+			.icon_content .img_content{
+				position: relative;
+				width: 80%;
+				margin-inline: auto;
+			}
+			.icon_content .img_content .icon_img{
+				border: solid 1px gray;
+				border-radius: 50%;
+				aspect-ratio: 1/1;
+				overflow: hidden;
+			}
+			.icon_content .img_content .icon_img img{
+				width: 100%;
+			}
+			.icon_content .img_content .sns_img{
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				right: 0;
+				bottom: 0;
+				width :35%;
+				aspect-ratio: 1/1;
+				background-color: white;
+				overflow: hidden;
+				border-radius: 50%;
+			}
+			.icon_content .img_content .sns_img img{
+				width: 90%;
+			}
+			/*----------------------------------------------
+				スライダー関連
+			----------------------------------------------*/
+			.slider_list{
+				overflow: hidden;
+				white-space: nowrap;
+				position: relative;
+			}
+			.slider_content{
+				display: inline-block;
+				background-color: var(--contentbg-color);
+				width: 33%;
+			}
+			.slider_content:not(:last-child){
+				margin-inline-end: 1em;
+			}
+			.slider_content .link_content{
+				display: none;
+			}
+			.slider_content .img_content img{
+				width: 100%;
+			}
+			/*----------------------------------------------
+				レスポンシブ対応
+			----------------------------------------------*/
+			@media screen and (max-width: 959px) {
+				body{
+					width: 80%;
+					min-width: 460px;
+				}
+				.icon_list{
+					grid-template-columns: repeat(2, 1fr);
+				}
+				.icon_content .img_content{
+					width: 40%;
+				}
+			}
+			@media screen and (max-width:720px) {
+				body{
+					width: 90%;
+					min-width: 360px;
+				}
+				.icon_list{
+					grid-template-columns: repeat(1, 1fr);
+				}
+			}
+		</style>
+		<script>
+			function slider_move(){
+				let slider_list = document.querySelector(".slider_list");
+				//let slider_x = window.getComputedStyle(slider_list);
+				let slider_x = slider_list.offsetLeft;
+				if(slider_x == null){
+					slider_x = 0;
+				}
+				console.log(slider_list);
+				console.log(slider_x);
+				//slider_list.style.left = slider_x + 1 + "px";
+			}
+			window.addEventListener("load",function(){
+				setInterval(slider_move,1000);
+			});
+		</script>
+	</head>
+	<body>
+		<header></header>
+		<main>
+			<section class="schedule_section">
+				<h2>しゅー間予定表</h2>
+				<div class="schedule_img"><img src="./img/schedule.png"></div>
+			</section>
+			<section class="news_section">
+				<h2>ニュース</h2>
+				<ul class="news_list">
+					<li class="news_content">
+						<h3 class="news_title">しゅー団座談会開催告知！</h3>
+						<p class="news_desc">2026/10/11にオフイベを開催！！</p>
+					</li>
+					<li class="news_content">
+						<h3 class="news_title">マインクライフ開催 2026/08/01から！</h3>
+						<p class="news_desc">しゅー団が開催する視聴者参加型マインクラフト企画！！</p>
+					</li>
+					<li class="news_content">
+						<h3 class="news_title">しゅー団公式Xが開設！</h3>
+						<p class="news_desc">遂に！9年目にして公式Xが開設！今後はここから情報が発信されるぞ！！</p>
+					</li>										 
+				</ul>
+			</section>
+			<section class="card_section">
+				<h2>メンバー紹介</h2>
+				<menu class="card_list">
+					<li class="card_content">
+						<a class="card_link" href="https://x.com/SyuudanNo1Simon" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/shimon_kao.png"></div><div class="sns_img"><img src="./img/x_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">No.1　シモん</h3>
+								<p class="desc_content">しゅー団の団長、この男から物語が始まった。<br>コンパス配信を主とする<br>好きな飲み物はオレンジジュース</p>
+							</div>
+						</a>
+					</li>
+					<li class="card_content">
+						<a class="card_link" href="https://x.com/repel06age5" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/repel_kao.png"></div><div class="sns_img"><img src="./img/x_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">No.5　リペル</h3>
+								<p class="desc_content">しゅー団の最終兵器、始まってしまうと止めることは不可能<br>ラジオ配信を主とする<br>好きな飲み物は"酒"</p>
+							</div>
+						</a>
+					</li>
+					<li class="card_content">
+						<a class="card_link" href="https://x.com/SyuudanNo6Tuba" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/TUBA_kao.png"></div><div class="sns_img"><img src="./img/x_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">No.6　TUBA</h3>
+								<p class="desc_content"><br>ラジオ配信を主とする<br>好きな飲み物は</p>
+							</div>
+						</a>
+					</li>
+				</menu>
+			</section>
+			<section class="icon_section">
+				<h2>SNS</h2>
+				<menu class="icon_list">
+					<li class="icon_content">
+						<a class="icon_link" href="https://www.youtube.com/@ShimoN0623" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/shimon_YT_icon.jpg"></div><div class="sns_img"><img src="./img/yt_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">シモんと愉快な仲間たち(Youtube)</h3>
+								<p class="desc_content">主な活動場所！</p>
+							</div>
+						</a>
+					</li>
+					<li class="icon_content">
+						<a class="icon_link" href="https://www.twitch.tv/no1_shimon_" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/shimon_twitch_icon.png"></div><div class="sns_img"><img src="./img/twitch_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">シモんと愉快な仲間たち(Twitch)</h3>
+								<p class="desc_content">密な活動場所！</p>
+							</div>
+						</a>
+					</li>
+					<li class="icon_content">
+						<a class="icon_link" href="https://x.com/SyuudanOfficial" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/SD_SNS_icon.jpg"></div><div class="sns_img"><img src="./img/x_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">しゅー団公式X</h3>
+								<p class="desc_content">しゅー団の情報はここから得よう！！</p>
+							</div>
+						</a>
+					</li>
+					<li class="icon_content">
+						<a class="icon_link" href="https://www.youtube.com/@%E3%81%97%E3%82%85%E3%83%BC%E5%9B%A3No1-5-6" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/SD_SNS_icon.jpg"></div><div class="sns_img"><img src="./img/yt_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">しゅー団動画保管庫</h3>
+								<p class="desc_content">Twitchのアーカイブ保存場所！</p>
+							</div>
+						</a>
+					</li>				 
+					<li class="icon_content">
+						<a class="icon_link" href="https://t.co/H665Rv9uTl" target="_blank">
+							<div class="img_content"><div class="icon_img"><img src="./img/discord_server_icon.png"></div><div class="sns_img"><img src="./img/discord_icon.png"></div></div>
+							<div class="link_content">
+								<h3 class="title_content">#コンパスしゅー会場</h3>
+								<p class="desc_content">コンパス民のためのディスコードサーバー！</p>
+							</div>
+						</a>
+					</li>				 
+				</menu>
+			</section>
+		</main>
+		<footer>
+			<div class="img_content"><img src="./img/SD_logo.png"></div>
+		</footer>
+	</body>
+</html>
