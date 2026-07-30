@@ -263,22 +263,6 @@
 				}
 			}
 		</style>
-		<script>
-			function slider_move(){
-				let slider_list = document.querySelector(".slider_list");
-				//let slider_x = window.getComputedStyle(slider_list);
-				let slider_x = slider_list.offsetLeft;
-				if(slider_x == null){
-					slider_x = 0;
-				}
-				console.log(slider_list);
-				console.log(slider_x);
-				//slider_list.style.left = slider_x + 1 + "px";
-			}
-			window.addEventListener("load",function(){
-				setInterval(slider_move,1000);
-			});
-		</script>
 	</head>
 	<body>
 		<header></header>
